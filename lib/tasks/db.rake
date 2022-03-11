@@ -2,7 +2,7 @@ def say(mess); puts mess; end
 
 namespace :db do
   desc 'Drop, create and migrate the database.'
-  task :reinstall do
+  task reinstall: :environment do
     ['uploads', 'public/uploads'].each do |path|
       cmd = "rm -fr #{path}"
       puts cmd
