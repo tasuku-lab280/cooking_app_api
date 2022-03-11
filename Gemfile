@@ -21,6 +21,7 @@ gem 'dotenv-rails'
 gem 'jwt'
 gem 'rack-cors'
 gem 'enumerize'
+gem 'devise'
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
