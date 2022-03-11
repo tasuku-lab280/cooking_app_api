@@ -116,6 +116,11 @@ GEM
     enumerize (2.5.0)
       activesupport (>= 3.2)
     erubi (1.10.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -317,6 +322,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   enumerize
+  factory_bot_rails
   graphiql-rails
   graphql
   importmap-rails

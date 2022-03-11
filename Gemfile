@@ -29,6 +29,7 @@ group :development, :test do
   # custom
   gem 'annotate'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
   gem 'pry-rails'
 end
 
