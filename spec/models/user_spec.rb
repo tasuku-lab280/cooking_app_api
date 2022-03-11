@@ -18,18 +18,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before do 
-    @user = build(:user)
-  end
+  let(:user) { build(:user) }
 
   describe 'バリデーション' do
     it '正常なインスタンスであること' do
-      expect(@user.valid?).to eq(true)
+      expect(user.valid?).to be(true)
     end
 
     it 'emailが空の時、falseになること' do
-      @user.email = ''
-      expect(@user.valid?).to eq(false)
+      user.email = ''
+      expect(user.valid?).to be(false)
     end
   end
 end
