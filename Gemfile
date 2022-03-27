@@ -22,6 +22,7 @@ gem 'jwt'
 gem 'rack-cors'
 gem 'enumerize'
 gem 'devise'
+gem 'devise_token_auth', '>= 1.2.0', git: "https://github.com/lynndylanhurley/devise_token_auth"
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'rails-i18n'
