@@ -1,5 +1,6 @@
 module Api
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ActionController::Api
+    # モジュール
     include DeviseTokenAuth::Concerns::SetUserByToken
   end
 end 
