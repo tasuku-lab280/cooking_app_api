@@ -20,3 +20,21 @@ MethodLength:
 
 Rails/BulkChangeTable:
   Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: false
+
+Layout/ArgumentAlignment:
+  Enabled: false
