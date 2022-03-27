@@ -1,4 +1,4 @@
-class Api::Auth::SessionsController < Api::ApplicationController
+class Api::Auth::SessionsController < ApplicationController
   # メソッド
   def index
     if current_api_user

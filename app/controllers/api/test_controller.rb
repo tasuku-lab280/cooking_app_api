@@ -1,4 +1,4 @@
-class Api::TestController < Api::ApplicationController
+class Api::TestController < ApplicationController
   def index
     render json: { message: 'Hello World!' }
   end
