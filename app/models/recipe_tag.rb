@@ -25,6 +25,7 @@ class RecipeTag < ApplicationRecord
   # 関連
   belongs_to :recipe
   belongs_to :tag
+  accepts_nested_attributes_for :tag
 
 
   # 委譲
@@ -37,14 +38,14 @@ class RecipeTag < ApplicationRecord
 
 
   # バリデーション
-  validates :recipe_id, presence: true
-                        # length: { maximum: 255 }
-                        # uniqueness: false
-                        # format: false
-  validates :tag_id,    presence: true
-                        # length: { maximum: 255 }
-                        # uniqueness: false
-                        # format: false
+  validates :recipe,  presence: true
+                      # length: { maximum: 255 }
+                      # uniqueness: false
+                      # format: false
+  validates :tag,     presence: true
+                      # length: { maximum: 255 }
+                      # uniqueness: false
+                      # format: false
 
 
   # クラス変数

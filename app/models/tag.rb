@@ -36,6 +36,10 @@ class Tag < ApplicationRecord
 
 
   # バリデーション
+  validates :name,  presence: true,
+                    length: { maximum: 255, allow_blank: true }
+                    # uniqueness: false
+                    # format: false
 
 
   # クラス変数

@@ -33,6 +33,7 @@ class Recipe < ApplicationRecord
   has_many :steps, dependent: :destroy
   has_many :touches, dependent: :destroy
   has_many :comments, dependent: :destroy
+  accepts_nested_attributes_for :recipe_tags, allow_destroy: true
   accepts_nested_attributes_for :ingredients, allow_destroy: true
   accepts_nested_attributes_for :steps, allow_destroy: true
 
@@ -64,6 +65,8 @@ class Recipe < ApplicationRecord
                           # length: { maximum: 255 }
                           # uniqueness: false
                           # format: false
+  validate :check_has_ingredients
+  validate :check_has_steps
 
 
   # クラス変数
@@ -79,4 +82,17 @@ class Recipe < ApplicationRecord
 
 
   # メソッド(Private)
+  private
+
+  def check_has_ingredients
+    return if ingredients.select(&:valid?).reject(&:marked_for_destruction?).any?
+
+    errors.add(:ingredients, :blank)
+  end
+
+  def check_has_steps
+    return if steps.select(&:valid?).reject(&:marked_for_destruction?).any?
+
+    errors.add(:steps, :blank)
+  end
 end
