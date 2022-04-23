@@ -1,4 +1,4 @@
-def say(mess); puts mess; end
+def say(mess) = puts(mess)
 
 namespace :db do
   desc 'Drop, create and migrate the database.'

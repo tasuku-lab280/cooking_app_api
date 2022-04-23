@@ -11,30 +11,12 @@ AllCops:
 Documentation:
   Enabled: false
 
-Style/SingleLineMethods:
-  Enabled: false
-
 MethodLength:
   CountComments: false
   Max: 300
 
-Rails/BulkChangeTable:
+MethodParameterName:
   Enabled: false
 
-ClassAndModuleChildren:
-  Enabled: false
-
-Style/TrailingCommaInArguments:
-  Enabled: false
-
-Style/TrailingCommaInArrayLiteral:
-  Enabled: false
-
-Style/TrailingCommaInHashLiteral:
-  Enabled: false
-
-Layout/EmptyLinesAroundAccessModifier:
-  Enabled: false
-
-Layout/ArgumentAlignment:
+UselessMethodDefinition:
   Enabled: false
