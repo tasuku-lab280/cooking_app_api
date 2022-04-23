@@ -81,7 +81,7 @@ class Recipe < ApplicationRecord
 
   # メソッド
   def created_at_text
-    time_ago_in_words(created_at) + '前'
+    "#{time_ago_in_words(created_at)}前"
   end
 
   def like_count
