@@ -37,7 +37,7 @@ class Ingredient < ApplicationRecord
 
 
   # バリデーション
-  validates :recipe_id, presence: true
+  validates :recipe,    presence: true
                         # length: { maximum: 255 }
                         # uniqueness: false
                         # format: false

@@ -18,6 +18,7 @@
 #
 class Stock < ApplicationRecord
   # モジュール
+  mount_uploader :image, StockImageUploader
 
 
   # 定数

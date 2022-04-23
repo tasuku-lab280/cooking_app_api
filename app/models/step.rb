@@ -15,6 +15,7 @@
 #
 class Step < ApplicationRecord
   # モジュール
+  mount_uploader :image, StepImageUploader
 
 
   # 定数
@@ -37,7 +38,7 @@ class Step < ApplicationRecord
 
 
   # バリデーション
-  validates :recipe_id,   presence: true
+  validates :recipe,      presence: true
                           # length: { maximum: 255 }
                           # uniqueness: false
                           # format: false

@@ -39,6 +39,12 @@ ja:
         image: 画像
         created_at: 作成日時
         updated_at: 更新日時
+      recipe/ingredients:
+        name: 材料名
+        quantity: 量
+      recipe/steps:
+        description: 説明
+        image: 画像
 
       ingredient:
         id: ID
