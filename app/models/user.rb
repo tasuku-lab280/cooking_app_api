@@ -2,11 +2,11 @@
 #
 # Table name: users
 #
-#  id                 :bigint           not null, primary key
-#  email              :string(255)      not null
-#  encrypted_password :string(255)      default(""), not null
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id         :bigint           not null, primary key
+#  nickname   :string(255)      not null
+#  email      :string(255)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 #
