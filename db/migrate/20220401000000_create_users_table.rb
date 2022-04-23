@@ -1,8 +1,8 @@
 class CreateUsersTable < ActiveRecord::Migration[7.0]
   def up
     create_table :users do |t|
-      t.string :email,              null: false
-      t.string :encrypted_password, null: false, default: ''
+      t.string :nickname, null: false
+      t.string :email,    null: false
 
       t.timestamps null: false
     end
