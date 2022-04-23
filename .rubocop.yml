@@ -26,3 +26,15 @@ Rails/BulkChangeTable:
 
 Metrics/AbcSize:
   Max: 300
+
+EmptyLines:
+  Enabled: false
+
+CommentIndentation:
+  Enabled: false
+
+RedundantPresenceValidationOnBelongsTo:
+  Enabled: false
+
+InverseOf:
+  Enabled: false

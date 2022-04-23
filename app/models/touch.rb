@@ -16,7 +16,7 @@
 class Touch < ApplicationRecord
   # モジュール
   extend Enumerize
-  enumerize :kind, in: %i(like favorite), predicates: { prefix: true }, scope: true
+  enumerize :kind, in: %i[like favorite], predicates: { prefix: true }, scope: true
 
 
   # 定数
