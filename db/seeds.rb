@@ -1,19 +1,14 @@
 COUNT = 10
-USER_IDS = [1, 2, 3]
-DUMMY_IMAGE = open("#{Rails.root}/app/assets/images/no_image.png")
-
+USER_IDS = [1, 2, 3].freeze
+DUMMY_IMAGE = File.open(Rails.root.join('app/assets/images/no_image.png'))
 
 # 会員
 results = Array.new(COUNT) do |i|
   num = i + 1
 
-  {
-    nickname:  "会員#{num}",
-    email: "dev+user#{num}@example.com",
-  }
+  { nickname: "会員#{num}", email: "dev+user#{num}@example.com" }
 end
 User.create!(results)
-
 
 # 在庫
 results = Array.new(COUNT) do |i|
@@ -30,7 +25,6 @@ results = Array.new(COUNT) do |i|
 end
 Stock.create!(results)
 
-
 # レシピ
 results = Array.new(COUNT) do |i|
   num = i + 1
@@ -46,3 +40,5 @@ results = Array.new(COUNT) do |i|
   }
 end
 Recipe.create!(results)
+
+DUMMY_IMAGE.close
