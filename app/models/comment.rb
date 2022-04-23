@@ -42,7 +42,7 @@ class Comment < ApplicationRecord
                         # length: { maximum: 255 }
                         # uniqueness: false
                         # format: false
-  validates :user_id,   presence: false
+  validates :user_id,   presence: true
                         # length: { maximum: 255 }
                         # uniqueness: false
                         # format: false
