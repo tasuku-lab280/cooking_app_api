@@ -7,3 +7,34 @@ require:
 
 AllCops:
   NewCops: enable
+
+Documentation:
+  Enabled: false
+
+Style/SingleLineMethods:
+  Enabled: false
+
+MethodLength:
+  CountComments: false
+  Max: 300
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: false
+
+Layout/ArgumentAlignment:
+  Enabled: false
