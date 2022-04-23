@@ -1,0 +1,93 @@
+ja:
+  activerecord:
+    models:
+      user: 会員
+      stock: 在庫
+      recipe: レシピ
+      ingredient: 材料
+      step: 手順
+      tag: タグ
+      recipe_tag: レシピタグ
+      touch: タッチ
+      comment: コメント
+      follow: フォロー
+
+    attributes:
+      user:
+        id: ID
+        nickname: ニックネーム
+        email: Eメール
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      stock:
+        id: ID
+        user_id: 会員ID
+        name: 在庫名
+        quantity: 量
+        expired_on: 賞味期限日
+        description: 説明
+        image: 画像
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      recipe:
+        id: ID
+        user_id: 会員ID
+        title: タイトル
+        description: 説明
+        image: 画像
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      ingredient:
+        id: ID
+        recipe_id: レシピID
+        name: 材料名
+        quantity: 量
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      step:
+        id: ID
+        recipe_id: レシピID
+        description: 説明
+        image: 画像
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      tag:
+        id: ID
+        name: タグ名
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      recipe_tag:
+        id: ID
+        recipe_id: レシピID
+        tag_id: タグID
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      touch:
+        id: ID
+        recipe_id: レシピID
+        user_id: 会員ID
+        kind: 種類
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      comment:
+        id: ID
+        recipe_id: レシピID
+        user_id: 会員ID
+        body: 本文
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      follow:
+        id: ID
+        follower_id: フォロワーID
+        followed_id: フォローID
+        created_at: 作成日時
+        updated_at: 更新日時
