@@ -17,6 +17,7 @@
 class Recipe < ApplicationRecord
   # モジュール
   mount_uploader :image, RecipeImageUploader
+  include ActionView::Helpers::DateHelper
 
 
   # 定数
@@ -79,6 +80,17 @@ class Recipe < ApplicationRecord
 
 
   # メソッド
+  def created_at_text
+    time_ago_in_words(created_at) + '前'
+  end
+
+  def like_count
+    touches.with_kind(:like).count
+  end
+
+  def favorite_count
+    touches.with_kind(:favorite).count
+  end
 
 
   # メソッド(Private)
