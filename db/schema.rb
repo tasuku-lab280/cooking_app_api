@@ -45,7 +45,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_01_000000) do
     t.integer "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipe_id", "tag_id"], name: "index_recipe_tags_on_recipe_id_and_tag_id"
+    t.index ["recipe_id"], name: "index_recipe_tags_on_recipe_id"
+    t.index ["tag_id"], name: "index_recipe_tags_on_tag_id"
   end
 
   create_table "recipes", charset: "utf8mb4", force: :cascade do |t|
@@ -86,11 +87,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_01_000000) do
   end
 
   create_table "touches", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "recipe_id", null: false
     t.integer "user_id", null: false
     t.string "kind", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["kind", "user_id"], name: "index_touches_on_kind_and_user_id", unique: true
+    t.index ["recipe_id"], name: "index_touches_on_recipe_id"
     t.index ["user_id"], name: "index_touches_on_user_id"
   end
 

@@ -76,11 +76,13 @@ class CreateCookingTables < ActiveRecord::Migration[7.0]
 
     # タッチ
     create_table :touches do |t|
-      t.integer :user_id, null: false
-      t.string  :kind,    null: false
+      t.integer :recipe_id, null: false
+      t.integer :user_id,   null: false
+      t.string  :kind,      null: false
 
       t.timestamps null: false
     end
+    add_index :touches, :recipe_id
     add_index :touches, :user_id
     add_index :touches, %i[kind user_id], unique: true
 
