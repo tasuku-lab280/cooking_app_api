@@ -20,3 +20,9 @@ MethodParameterName:
 
 UselessMethodDefinition:
   Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 300
