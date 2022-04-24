@@ -11,5 +11,10 @@ module Types
     def users
       User.all
     end
+
+    field :recipes, [RecipeType], null: false
+    def recipes
+      Recipe.all
+    end
   end
 end

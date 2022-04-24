@@ -20,3 +20,30 @@ MethodParameterName:
 
 UselessMethodDefinition:
   Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 300
+
+EmptyLines:
+  Enabled: false
+
+CommentIndentation:
+  Enabled: false
+
+RedundantPresenceValidationOnBelongsTo:
+  Enabled: false
+
+InverseOf:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
