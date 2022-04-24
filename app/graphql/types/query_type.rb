@@ -7,12 +7,17 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    field :users, [UserType], null: false
+    field :current_user, Types::UserType, null: false
+    def current_user
+      context[:current_user]
+    end
+
+    field :users, [Types::UserType], null: false
     def users
       User.all
     end
 
-    field :recipes, [RecipeType], null: false
+    field :recipes, [Types::RecipeType], null: false
     def recipes
       Recipe.all
     end
