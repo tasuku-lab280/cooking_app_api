@@ -19,7 +19,7 @@ module TokenAuthenticatable
   end
 
   def http_token
-    request.headers['Authorization'].split(' ').last if request.headers['Authorization'].present?
+    request.headers['Authorization'].split.last if request.headers['Authorization'].present?
   end
 
   def retrieve_auth_token

@@ -12,7 +12,7 @@ module Myapp
     config.api_only = true
 
     # Autoload
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W[#{config.root}/lib]
 
     # GraphiQLを使用する為に必要
     # https://daido.hatenablog.jp/entry/2020/05/06/143145
