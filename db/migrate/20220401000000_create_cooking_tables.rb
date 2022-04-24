@@ -2,13 +2,15 @@ class CreateCookingTables < ActiveRecord::Migration[7.0]
   def up
     # 会員
     create_table :users do |t|
-      t.string :nickname, null: false
-      t.string :email,    null: false
+      t.string :auth0_id, null: false
+      t.string :email
+      t.string :nickname
+      t.string :image
 
       t.timestamps null: false
     end
-
-    add_index :users, :email, unique: true
+    add_index :users, :auth0_id, unique: true
+    add_index :users, :email,    unique: true
 
     # 在庫
     create_table :stocks do |t|

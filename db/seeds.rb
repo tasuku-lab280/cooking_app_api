@@ -6,7 +6,12 @@ DUMMY_IMAGE = File.open(Rails.root.join('app/assets/images/no_image.png'))
 results = Array.new(COUNT) do |i|
   num = i + 1
 
-  { nickname: "会員#{num}", email: "dev+user#{num}@example.com" }
+  {
+    auth0_id: SecureRandom.base64(12),
+    nickname: "会員#{num}",
+    email: "dev+user#{num}@example.com",
+    image: DUMMY_IMAGE,
+  }
 end
 User.create!(results)
 
