@@ -1,5 +1,4 @@
 class GraphqlController < ApplicationController
-  include TokenAuthenticatable
   # If accessing from outside this domain, nullify the session
   # This allows for outside API access while preventing CSRF attacks,
   # but you'll have to authenticate your user separately
@@ -12,6 +11,7 @@ class GraphqlController < ApplicationController
     context = {
       # Query context goes here, for example:
       current_user:,
+      auth0_id:,
     }
     result = MyappSchema.execute(query, variables:, context:, operation_name:)
     render json: result

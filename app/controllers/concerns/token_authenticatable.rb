@@ -4,7 +4,16 @@ module TokenAuthenticatable
 
   # メソッド
   def current_user
-    @current_user ||= User.from_token_payload(auth_payload)
+    @current_user ||= begin
+      payload = auth_payload
+      return nil if payload.blank?
+
+      User.find_by(auth0_id: payload['sub'])
+    end
+  end
+
+  def auth0_id
+    @auth0_id ||= auth_payload['sub']
   end
 
 

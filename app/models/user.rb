@@ -68,11 +68,6 @@ class User < ApplicationRecord
 
 
   # クラスメソッド
-  def self.from_token_payload(payload)
-    return if payload.blank?
-
-    find_or_create_by!(auth0_id: payload['sub'])
-  end
 
 
   # クラスメソッド(Private)

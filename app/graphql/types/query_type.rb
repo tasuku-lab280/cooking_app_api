@@ -7,7 +7,7 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    field :current_user, Types::UserType, null: false
+    field :current_user, Types::UserType, null: true
     def current_user
       context[:current_user]
     end
