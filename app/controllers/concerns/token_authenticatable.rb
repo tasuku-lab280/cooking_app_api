@@ -6,9 +6,12 @@ module TokenAuthenticatable
   def current_user
     @current_user ||= begin
       payload = auth_payload
-      return nil if payload.blank?
 
-      User.find_by(auth0_id: payload['sub'])
+      if payload.blank?
+        nil
+      else
+        User.find_by(auth0_id: payload['sub'])
+      end
     end
   end
 
