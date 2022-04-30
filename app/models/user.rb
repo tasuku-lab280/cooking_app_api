@@ -50,14 +50,12 @@ class User < ApplicationRecord
                         # format: false
   validates :email,     presence: true,
                         length: { maximum: 255 },
-                        uniqueness: true,
+                        uniqueness: true
                         # format: false
-                        unless: -> { validation_context == :create }
   validates :nickname,  presence: true,
-                        length: { maximum: 32, allow_blank: true },
+                        length: { maximum: 32, allow_blank: true }
                         # uniqueness: false
                         # format: false
-                        unless: -> { validation_context == :create }
   # validates :image,     presence: false
                         # length: { maximum: 255 }
                         # uniqueness: false
