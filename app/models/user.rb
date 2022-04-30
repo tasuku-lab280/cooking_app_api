@@ -14,6 +14,7 @@
 #
 class User < ApplicationRecord
   # モジュール
+  mount_uploader :image, UserImageUploader
 
 
   # 定数
@@ -43,13 +44,23 @@ class User < ApplicationRecord
 
 
   # バリデーション
+  validates :auth0_id,  presence: true,
+                        # length: { maximum: 255 }
+                        uniqueness: true
+                        # format: false
   validates :email,     presence: true,
-                        length: { maximum: 255 }
+                        length: { maximum: 255 },
+                        uniqueness: true,
+                        # format: false
+                        unless: -> { validation_context == :create }
+  validates :nickname,  presence: true,
+                        length: { maximum: 32, allow_blank: true },
                         # uniqueness: false
                         # format: false
-  validates :nickname,  presence: true,
-                        length: { maximum: 32, allow_blank: true }
-                        # uniqueness: false,
+                        unless: -> { validation_context == :create }
+  # validates :image,     presence: false
+                        # length: { maximum: 255 }
+                        # uniqueness: false
                         # format: false
 
 

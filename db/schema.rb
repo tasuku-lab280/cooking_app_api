@@ -98,10 +98,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_01_000000) do
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
-    t.string "nickname", null: false
-    t.string "email", null: false
+    t.string "auth0_id", null: false
+    t.string "email"
+    t.string "nickname"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["auth0_id"], name: "index_users_on_auth0_id", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
