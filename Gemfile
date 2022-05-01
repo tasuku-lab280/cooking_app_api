@@ -12,6 +12,7 @@ gem 'rack-cors'
 
 # custom
 gem 'graphql'
+gem 'apollo_upload_server'
 gem 'carrierwave'
 gem 'dotenv-rails'
 gem 'jwt'

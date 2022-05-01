@@ -71,6 +71,9 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    apollo_upload_server (2.1.0)
+      actionpack (>= 4.2)
+      graphql (>= 1.8)
     ast (2.4.2)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
@@ -266,6 +269,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  apollo_upload_server
   bootsnap
   carrierwave
   debug
