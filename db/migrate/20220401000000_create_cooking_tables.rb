@@ -2,79 +2,59 @@ class CreateCookingTables < ActiveRecord::Migration[7.0]
   def up
     # 会員
     create_table :users do |t|
-      t.string :auth0_id, null: false
-      t.string :email
-      t.string :nickname
-      t.string :image
+      t.string :auth0_id,   null: false
+      t.string :account_id, null: false
+      t.string :nickname,   null: false
+      t.string :icon
 
       t.timestamps null: false
     end
-    add_index :users, :auth0_id, unique: true
-    add_index :users, :email,    unique: true
+    add_index :users, :auth0_id,   unique: true
+    add_index :users, :account_id, unique: true
 
-    # 在庫
-    create_table :stocks do |t|
+    # 材料
+    create_table :ingredients do |t|
       t.integer :user_id,    null: false
       t.string  :name,       null: false
       t.string  :quantity,   null: false
       t.date    :expired_on, null: false
       t.text    :description
-      t.string  :image
+      t.string  :picture
 
       t.timestamps null: false
     end
-    add_index :stocks, :user_id
+    add_index :ingredients, :user_id
 
     # レシピ
     create_table :recipes do |t|
       t.integer :user_id,     null: false
-      t.string  :title,       null: false
+      t.string  :status,      null: false, default: :public
+      t.string  :name,        null: false
       t.text    :description, null: false
-      t.string  :image,       null: false
+      t.string  :picture,     null: false
+      t.text    :reference
 
       t.timestamps null: false
     end
 
     add_index :recipes, :user_id
 
-    # 材料
-    create_table :ingredients do |t|
-      t.integer :recipe_id, null: false
-      t.string  :name,      null: false
-      t.string  :quantity,  null: false
-
-      t.timestamps null: false
-    end
-
-    add_index :ingredients, :recipe_id
-
-    # 手順
-    create_table :steps do |t|
-      t.integer :recipe_id,   null: false
-      t.text    :description, null: false
-      t.string  :image
-
-      t.timestamps null: false
-    end
-
-    add_index :steps, :recipe_id
-
-    # タグ
-    create_table :tags do |t|
+    # カテゴリ
+    create_table :categories do |t|
       t.string :name, null: false
 
       t.timestamps null: false
     end
 
-    # レシピタグ
-    create_table :recipe_tags do |t|
-      t.integer :recipe_id, null: false
-      t.integer :tag_id,    null: false
+    # レシピカテゴリ
+    create_table :recipe_categories do |t|
+      t.integer :recipe_id,   null: false
+      t.integer :category_id, null: false
 
       t.timestamps null: false
     end
-    add_index :recipe_tags, :recipe_id
-    add_index :recipe_tags, :tag_id
+    add_index :recipe_categories, :recipe_id
+    add_index :recipe_categories, :category_id
 
     # タッチ
     create_table :touches do |t|
@@ -113,12 +93,10 @@ class CreateCookingTables < ActiveRecord::Migration[7.0]
 
   def down
     drop_table :users
-    drop_table :stocks
-    drop_table :recipes
     drop_table :ingredients
-    drop_table :steps
-    drop_table :tags
-    drop_table :recipe_tags
+    drop_table :recipes
+    drop_table :categories
+    drop_table :recipe_categories
     drop_table :touches
     drop_table :comments
     drop_table :follows

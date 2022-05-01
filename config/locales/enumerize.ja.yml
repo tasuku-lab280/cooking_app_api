@@ -1,5 +1,10 @@
 ja:
   enumerize:
+    recipe:
+      status:
+        public: 公開
+        private: 非公開
+
     touch:
       kind:
         like: いいね

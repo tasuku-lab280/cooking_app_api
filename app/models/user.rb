@@ -3,8 +3,10 @@
 # Table name: users
 #
 #  id         :bigint           not null, primary key
+#  auth0_id   :string(255)      not null
+#  account_id :string(255)      not null
 #  nickname   :string(255)      not null
-#  email      :string(255)      not null
+#  icon       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -14,7 +16,7 @@
 #
 class User < ApplicationRecord
   # モジュール
-  mount_uploader :image, UserImageUploader
+  mount_uploader :icon, UserIconUploader
 
 
   # 定数
@@ -31,7 +33,7 @@ class User < ApplicationRecord
   has_many :touches, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :recipes, dependent: :destroy
-  has_many :stocks, dependent: :destroy
+  has_many :ingredients, dependent: :destroy
 
 
   # 委譲
@@ -44,22 +46,22 @@ class User < ApplicationRecord
 
 
   # バリデーション
-  validates :auth0_id,  presence: true,
-                        # length: { maximum: 255 }
-                        uniqueness: true
-                        # format: false
-  validates :email,     presence: true,
-                        length: { maximum: 255 },
-                        uniqueness: true
-                        # format: false
-  validates :nickname,  presence: true,
-                        length: { maximum: 32, allow_blank: true }
-                        # uniqueness: false
-                        # format: false
-  # validates :image,     presence: false
-                        # length: { maximum: 255 }
-                        # uniqueness: false
-                        # format: false
+  validates :auth0_id,    presence: true,
+                          # length: { maximum: 255 }
+                          uniqueness: true
+                          # format: false
+  validates :account_id,  presence: true,
+                          length: { maximum: 32, allow_blank: true },
+                          uniqueness: true
+                          # format: false
+  validates :nickname,    presence: true,
+                          length: { maximum: 32, allow_blank: true }
+                          # uniqueness: false
+                          # format: false
+  # validates :icon,        presence: false
+                          # length: { maximum: 255 }
+                          # uniqueness: false
+                          # format: false
 
 
   # クラス変数

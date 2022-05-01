@@ -4,9 +4,11 @@
 #
 #  id          :bigint           not null, primary key
 #  user_id     :integer          not null
-#  title       :string(255)      not null
+#  status      :string(255)      default("public"), not null
+#  name        :string(255)      not null
 #  description :text(65535)      not null
-#  image       :string(255)      not null
+#  picture     :string(255)      not null
+#  reference   :text(65535)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -16,7 +18,9 @@
 #
 class Recipe < ApplicationRecord
   # モジュール
-  mount_uploader :image, RecipeImageUploader
+  extend Enumerize
+  enumerize :status, in: %i[public private], predicates: { prefix: true }, scope: true
+  mount_uploader :picture, RecipePictureUploader
   include ActionView::Helpers::DateHelper
 
 
@@ -28,16 +32,11 @@ class Recipe < ApplicationRecord
 
   # 関連
   belongs_to :user
-  has_many :recipe_tags, dependent: :destroy
-  has_many :tags, through: :recipe_tags
-  has_many :ingredients, dependent: :destroy
-  has_many :steps, dependent: :destroy
+  has_many :recipe_categories, dependent: :destroy
+  has_many :categories, through: :recipe_categories
   has_many :touches, dependent: :destroy
   has_many :comments, dependent: :destroy
-  accepts_nested_attributes_for :recipe_tags, allow_destroy: true
-  accepts_nested_attributes_for :ingredients, allow_destroy: true
-  accepts_nested_attributes_for :steps, allow_destroy: true
-
+  accepts_nested_attributes_for :recipe_categories, allow_destroy: true
 
 
   # 委譲
@@ -54,7 +53,11 @@ class Recipe < ApplicationRecord
                           # length: { maximum: 255 }
                           # uniqueness: false
                           # format: false
-  validates :title,       presence: true,
+  validates :status,      presence: true
+                          # length: { maximum: 255 }
+                          # uniqueness: false
+                          # format: false
+  validates :name,        presence: true,
                           length: { maximum: 255, allow_blank: true }
                           # uniqueness: false
                           # format: false
@@ -62,12 +65,11 @@ class Recipe < ApplicationRecord
                           length: { maximum: 1024, allow_blank: true }
                           # uniqueness: false
                           # format: false
-  validates :image,       presence: true
+  validates :picture,     presence: true
                           # length: { maximum: 255 }
                           # uniqueness: false
                           # format: false
-  validate :check_has_ingredients
-  validate :check_has_steps
+  validate :check_has_recipe_categories
 
 
   # クラス変数
@@ -96,15 +98,13 @@ class Recipe < ApplicationRecord
   # メソッド(Private)
   private
 
-  def check_has_ingredients
-    return if ingredients.select(&:valid?).reject(&:marked_for_destruction?).any?
+  def check_has_recipe_categories
+    valid_categories = recipe_categories.select(&:valid?).reject(&:marked_for_destruction?)
 
-    errors.add(:ingredients, :blank)
-  end
-
-  def check_has_steps
-    return if steps.select(&:valid?).reject(&:marked_for_destruction?).any?
-
-    errors.add(:steps, :blank)
+    if valid_categories.blank?
+      errors.add(:recipe_categories, :blank)
+    elsif valid_categories.length > 3
+      errors.add(:recipe_categories, 'は3つ以下にしてください。')
+    end
   end
 end

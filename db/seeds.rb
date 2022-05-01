@@ -8,27 +8,35 @@ results = Array.new(COUNT) do |i|
 
   {
     auth0_id: SecureRandom.base64(12),
+    account_id: SecureRandom.base64(12),
     nickname: "会員#{num}",
-    email: "dev+user#{num}@example.com",
-    image: DUMMY_IMAGE,
+    icon: DUMMY_IMAGE,
   }
 end
 User.create!(results)
 
-# 在庫
+# 材料
 results = Array.new(COUNT) do |i|
   num = i + 1
 
   {
     user_id: USER_IDS[i % 3],
-    name: "サンプル在庫名#{num}",
+    name: "サンプル材料名#{num}",
     quantity: "サンプル数量#{num}",
     expired_on: Time.current.since(num.days),
     description: "サンプル説明#{num}",
-    image: DUMMY_IMAGE,
+    picture: DUMMY_IMAGE,
   }
 end
-Stock.create!(results)
+Ingredient.create!(results)
+
+# カテゴリ
+results = Array.new(COUNT) do |i|
+  num = i + 1
+
+  { name: "サンプルカテゴリ名#{num}" }
+end
+Category.create!(results)
 
 # レシピ
 results = Array.new(COUNT) do |i|
@@ -36,12 +44,12 @@ results = Array.new(COUNT) do |i|
 
   {
     user_id: USER_IDS[i % 3],
-    title: "サンプルレシピ名#{num}",
+    status: :public,
+    name: "サンプルレシピ名#{num}",
     description: "サンプル説明#{num}",
-    image: DUMMY_IMAGE,
-    recipe_tags_attributes: [{ tag_attributes: { name: "サンプルタグ名#{num}" } }],
-    ingredients_attributes: [{ name: "サンプル材料名#{num}", quantity: "サンプル数量#{num}" }],
-    steps_attributes: [{ description: "サンプル説明#{num}", image: DUMMY_IMAGE }],
+    picture: DUMMY_IMAGE,
+    reference: "サンプル参考文献#{num}",
+    recipe_categories_attributes: [{ category_id: num }],
   }
 end
 Recipe.create!(results)
