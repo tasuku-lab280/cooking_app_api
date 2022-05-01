@@ -13,7 +13,8 @@ module Types
 
 
     # 関連
-    field :user, UserType, null: false
+    field :user, Types::UserType, null: false
+    field :tags, [Types::TagType], null: true
 
 
     # メソッド
