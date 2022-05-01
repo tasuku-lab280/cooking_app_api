@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: tags
+# Table name: categories
 #
 #  id         :bigint           not null, primary key
 #  name       :string(255)      not null
@@ -11,7 +11,7 @@
 #
 # = タグ
 #
-class Tag < ApplicationRecord
+class Category < ApplicationRecord
   # モジュール
 
 
@@ -22,8 +22,8 @@ class Tag < ApplicationRecord
 
 
   # 関連
-  has_many :recipe_tags, dependent: :destroy
-  has_many :recipes, through: :recipe_tags
+  has_many :recipe_categories, dependent: :destroy
+  has_many :recipes, through: :recipe_categories
 
 
   # 委譲

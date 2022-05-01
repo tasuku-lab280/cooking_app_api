@@ -1,4 +1,4 @@
-class StepImageUploader < CarrierWave::Uploader::Base
+class RecipePictureUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
