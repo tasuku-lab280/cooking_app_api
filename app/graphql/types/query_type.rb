@@ -19,7 +19,12 @@ module Types
 
     field :recipes, [Types::RecipeType], null: false
     def recipes
-      Recipe.all
+      Recipe.order(created_at: :desc)
+    end
+
+    field :categories, [Types::CategoryType], null: false
+    def categories
+      Category.all
     end
   end
 end
