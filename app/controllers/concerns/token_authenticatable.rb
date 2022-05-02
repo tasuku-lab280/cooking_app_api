@@ -16,7 +16,15 @@ module TokenAuthenticatable
   end
 
   def auth0_id
-    @auth0_id ||= auth_payload['sub']
+    @auth0_id ||= begin
+      payload = auth_payload
+
+      if payload.blank?
+        nil
+      else
+        auth_payload['sub']
+      end
+    end
   end
 
 
