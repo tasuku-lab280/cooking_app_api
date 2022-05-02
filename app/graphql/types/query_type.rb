@@ -17,9 +17,24 @@ module Types
       User.all
     end
 
-    field :recipes, [Types::RecipeType], null: false
-    def recipes
-      Recipe.all
+    field :recipes, [Types::RecipeType], null: false do
+      argument :keyword, String, required: false
+      argument :category_ids, [String], required: false
+    end
+    def recipes(keyword:, category_ids:)
+      recipes = Recipe.all
+      if keyword.present?
+        recipes = recipes.where(Recipe.arel_table[:name].matches("%#{keyword}%"))
+      end
+      if category_ids.present?
+        recipes = recipes.joins(:categories).merge(Category.where(id: category_ids.map(&:to_i)))
+      end
+      recipes.order(created_at: :desc)
+    end
+
+    field :categories, [Types::CategoryType], null: false
+    def categories
+      Category.all
     end
   end
 end
